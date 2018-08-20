@@ -1,6 +1,72 @@
 @baseFontSize: 0.5rem;
 @KeyFontSize : @baseFontSize * 3;
-@DefFontSIze : @baseFontSIze * 2;
+@DefFontSize : @baseFontSize * 2;
 @baseBlue: #418AB6;
-@baseYelloe: #F9E48B;
+@baseYellow: #F9E48B;
+@baseGray: #E9EDEC; 
+@baseMargin: 1rem;
+@basePadding:0.25rem;
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+   
+}
+*::selection{
+    background-color: lightsalmon;
+}
+k {
+    font-weight: bold;
+    font-size: @KeyFontSize;
+    margin: @baseMargin;
+    transition: background-color 0.3s;
+}
+k:hover{
+    background-color: rgba(red(@baseBlue), green(@baseBlue), blue(@baseBlue), 0.4)
+}
 
+body>def {
+    margin: @baseMargin;
+}
+
+@posFrameWidth : 3rem;
+gr {
+    width: @posFrameWidth;
+    background-color: @baseBlue;
+    color: @baseYellow;
+    text-align: center;
+    padding: @basePadding/2 0;
+}
+
+.breakline{
+    border-bottom: @baseGray 2px solid;
+    color: @baseBlue;
+    font-weight: bold;
+    display: block;
+    font-size: @DefFontSize;
+    letter-spacing: 1px;
+    padding-bottom: @basePadding;
+    margin-bottom: @baseMargin*0.75;
+    margin-top: @baseMargin*1.5;
+}
+dtrn:first-of-type::before{
+    content: "General Translation";
+    .breakline();
+}
+dtrn:not(:first-of-type), 
+ex:not(:first-of-type),
+def>def:not(:first-of-type),
+sr:not(:first-of-type){
+    padding-top: @basePadding*2;
+} 
+def>def:first-of-type::before{
+    content: "Definition";
+    .breakline();
+}
+ex:first-of-type::before{
+    content: "Usage Example";
+    .breakline();
+}
+sr:first-of-type::before{
+    content: "Synonym";
+    .breakline();
+}
